@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tabsim"
 version = "0.0.2"
-license = {file = "LICENSE"}
+license-files = ["LICENSE"]
 readme = "README.md"
 # dynamic = ["version", "readme"]
 authors = [
