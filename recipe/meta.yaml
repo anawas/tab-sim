@@ -1,0 +1,55 @@
+package:
+  name: tabsim
+  version: "0.0.2"
+
+source:
+  path: .
+
+build:
+  noarch: python
+  script: 
+    - "{{ PYTHON }} -m pip install . -vv"
+    - "{{ PYTHON }} -m pip install spacetrack"
+
+requirements:
+  build:
+    - python >=3.10,<3.13
+    - pip
+    - setuptools >=64
+  run:
+    - python >=3.10,<3.13
+    - jax
+    - dask <=2024.10.0
+    - xarray
+    - zarr <3.0.0
+    - dask-ms >=0.2.21
+    - scipy
+    - tqdm
+    - matplotlib
+    - astropy
+    - skyfield
+    - numpy <2.0.0
+
+test:
+  imports:
+    - tabsim
+  commands:
+    - tle-region --help
+    - ast-region --help
+    - flag-data --help
+    - sim-vis --help
+
+about:
+  home: https://github.com/chrisfinlay/tab-sim.git
+  license: MIT  # Falls die Datei `LICENSE` tatsächlich eine MIT-Lizenz enthält
+  license_file: LICENSE
+  summary: Trajectory-based Radio Frequency Interference (RFI) simulations for radio interferometric data.
+  description: |
+    Trajectory-based Radio Frequency Interference (RFI) simulations for radio interferometric data.
+  authors:
+    - Chris Finlay <christopher.finlay@epfl.ch>
+
+extra:
+  recipe-maintainers:
+    - chrisfinlay
+    - anawas
